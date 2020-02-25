@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <!-- 注意填写标题！ -->
+    <title>Java Set 学习笔记</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo" style="font-size:20px"><strong>Champrin's</strong> blog</a>
+
+            </header>
+
+            <!-- Content -->
+            <section>
+                <header class="main">
+                    <h1>Java-Set</h1>
+                </header>
+                <p>Java Set 学习记录</p>
+                <p>Set的方法继承了Collection，操作Set可回顾<a href="Java-Collection.html">Java集合 学习记录</a></p>
+
+
+                <hr class="major"/>
+
+                <h2>增强for循环 </h2>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp增强for循环 不支持并发操作
+                </p>
+
+                <hr class="major"/>
+
+                <h2>HashSet </h2>
+                <p style="font-size:20px">HashSet是不含重复元素的集合、最多包含一个null、元素是无序的、线程不安全（效率高）</p>
+                <br>
+                <p style="font-size:10px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp自定义元素重复比较规则
+                </p>
+                <pre><code>
+重写equals
+ @Override
+    public boolean equals(Object obj){
+        boolean isEq = false;
+        if (obj instanceof Persion){
+            Persion p = (Persion) obj;
+            if (this.name != null && p.name != null && this.age==p.age&& this.name.equals(p.name))
+            {
+                boolean isEq = true;
+            }
+        }
+    }
+</code></pre>
+
+                <hr class="major"/>
+
+                <h2>LinkedHashSet </h2>
+                <p style="font-size:20px">LinkedHashSet是不含重复元素的集合、最多包含一个null、元素是有序的、线程不安全（效率高）</p>
+                <p style="font-size:20px">LinkedHashSet与HashSet对比就多了一个顺序，应用的不多</p>
+
+                <hr class="major"/>
+
+                <h2>TreeSet </h2>
+                <p style="font-size:10px">TreeSet可以支持自定义排序。如果TreeSet所储存的对象的类没有实现Comparable接口就会报错ClassCastException。
+                所以要使用TreeSet来对自定义对象排序必须实现Comparable接口</p>
+                <p style="font-size:10px">
+                    特点：元素唯一性、可以自定义排序、不允许null存在、不是线程安全
+                </p>
+                <h3>1.排序比较</h3>
+                <p style="font-size:10px">
+                    *字符串的比较规则是先按第一个字符来比较，之后按第二个、第三个.......
+                </p>
+                <h3>2.类如果要实现比较的规则都会要实现Comparable接口</h3>
+                <pre><code>
+先implement Comparable
+ @Override
+    public int compareTo(Student o){
+        int flag = this.age - o.age;
+        if (flag==0){
+            flag = this.name.compareTo(o.name);
+        }
+        return flag;
+    }
+   返回正数则为大，0为相等，负数为小
+</code></pre>
+                <hr class="major"/>
+            </section>
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo">
+                    <div style="position:absolute;right:0;top:0;">
+                        <ul class="actions small">
+                            <li><a href="index.html" class="button primary small"><strong>返回主页</strong></a></li>
+                        </ul>
+                    </div>
+                </a>
+            </header>
+
+            <section>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

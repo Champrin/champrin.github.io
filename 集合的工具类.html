@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <!-- 注意填写标题！ -->
+    <title>集合的工具类</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo" style="font-size:20px"><strong>Champrin's</strong> blog</a>
+
+            </header>
+
+            <!-- Content -->
+            <section>
+                <header class="main">
+                    <h1>集合的工具类Collections</h1>
+                    <p>Collection与Collections的区别为：前者是集合的接口，后者是操作集合的工具类</p>
+                </header>
+                <hr class="major"/>
+
+                <h2>方法摘要 </h2>
+                <div class="table-wrapper">
+                    <table class="alt">
+                        <tbody>
+                        <tr>
+                            <td>static void</td>
+                            <td>reverse(List<?> list)<br>反转指定列表中元素的顺序。</td>
+                            <td> 集合反转</td>
+                        </tr>
+                        <tr>
+                            <td>static void</td>
+                            <td>shuffle(List<?> list)<br>使用默认随机源对指定列表进行置换。</td>
+                            <td>打乱集合</td>
+                        </tr>
+                        <tr>
+                            <td>static < T extends Comparable < ? super T> > void</td>
+                            <td> sort(List< T > list)
+                                <br>根据元素的自然顺序 对指定列表按升序进行排序。
+                            </td>
+                            <td>使用要求：此列表中的对象的类要实现Comparable接口</td>
+                        </tr>
+                        <tr>
+                            <td>static < T > void</td>
+                            <td>sort(List< T > list, Comparator<? super T> c)<br>根据指定比较器产生的顺序对指定列表进行排序。</td>
+                            <td>用外部比较器来对列表进行排序</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>synchronized(List,Set,Map)<br>返回一个线程安全的这个列表</td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+
+                <hr class="major"/>
+
+                <div class="table-wrapper">
+                    <table class="alt">
+
+                        <tbody>
+                        <tr>
+                            <td>static < T > List< T ></td>
+                            <td>asList(T... a)
+                                <br> 返回一个受指定数组支持的固定大小的列表。
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+                <p>我们不能把基本数据类型的数组转换成集合（int为基本数据类型，Integer不为基本数据类型，用Integer代替int使用asList方法)
+                    <br>如果传了，就会把数组的类型作为泛型
+                </p>
+                <hr class="major"/>
+            </section>
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo">
+                    <div style="position:absolute;right:0;top:0;">
+                        <ul class="actions small">
+                            <li><a href="index.html" class="button primary small"><strong>返回主页</strong></a></li>
+                        </ul>
+                    </div>
+                </a>
+            </header>
+
+            <section>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

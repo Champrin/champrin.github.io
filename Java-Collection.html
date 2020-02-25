@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <!-- 注意填写标题！ -->
+    <title>Java集合的学习记录</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo" style="font-size:20px"><strong>Champrin's</strong> blog</a>
+
+            </header>
+
+            <!-- Content -->
+            <section>
+                <header class="main">
+                    <h1>Java-Collection</h1>
+                </header>
+
+
+                <p>Java集合学习记录</p>
+
+
+                <hr class="major"/>
+                <h2>方法摘要 </h2>
+                <div class="table-wrapper">
+                    <table class="alt">
+
+                        <tbody>
+                        <tr>
+
+                            <td>boolean</td>
+                            <td>add(E e) <br>确保此 collection 包含指定的元素（可选操作）</td>
+                            <td>添加一个元素</td>
+                        </tr>
+                        <tr>
+                            <td>boolean</td>
+                            <td>addAll(Collection<? extends E> c)<br>将指定 collection 中的所有元素都添加到此 collection 中（可选操作）。</td>
+                            <td>添加一个集合</td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td> clear()
+                                <br>移除此 collection 中的所有元素（可选操作）。
+                            </td>
+                            <td>清空集合</td>
+                        </tr>
+                        <tr>
+                            <td>boolean</td>
+                            <td>remove(Object o)
+                                <br>从此 collection 中移除指定元素的单个实例，如果存在的话（可选操作）。
+                            </td>
+                            <td>移除一个元素</td>
+                        </tr>
+                        <tr>
+                            <td>boolean</td>
+                            <td>removeAll(Collection<?> c)
+                                <br>移除此 collection 中那些也包含在指定 collection 中的所有元素（可选操作）。
+                            </td>
+                            <td>从中移除一个集合</td>
+                        </tr>
+                        <tr>
+                            <td>boolean</td>
+                            <td>contains(Object o)
+                                <br>如果此 collection 包含指定的元素，则返回 true。
+                            </td>
+                            <td>判断集合中是否包含这个元素</td>
+                        </tr>
+                        <tr>
+                            <td>boolean</td>
+                            <td>containsAll(Collection<?> c)
+                                <br>如果此 collection 包含指定 collection 中的所有元素，则返回 true。
+                            </td>
+                            <td>判断集合中是否包含这个集合</td>
+                        </tr>
+                        <tr>
+                            <td>boolean</td>
+                            <td>isEmpty()
+                                <br>如果此 collection 不包含元素，则返回 true。
+                            </td>
+                            <td>判断一个集合是否为空</td>
+                        </tr>
+                        <tr>
+                            <td>Object[]</td>
+                            <td>toArray()
+                                <br>返回包含此 collection 中所有元素的数组。
+                            </td>
+                            <td>把集合转换成数组</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+
+
+                <hr class="major"/>
+
+                <h2>集合的迭代器 </h2>
+                <div class="table-wrapper">
+                    <table class="alt">
+
+                        <tbody>
+
+                        <tr>
+                            <td>Iterator < E ></td>
+                            <td>iterator()
+                                <br>返回在此 collection 的元素上进行迭代的迭代器。
+                            </td>
+                            <td>获得这个集合的迭代器</td>
+                        </tr>
+                        <tr>
+                            <td>boolean</td>
+                            <td>hasNext()
+                                <br>如果仍有元素可以迭代，则返回 true。
+                            </td>
+                            <td>判断迭代器中是否有下一个元素</td>
+                        </tr>
+                        <tr>
+                            <td>E</td>
+                            <td>next()
+                                <br>返回迭代的下一个元素。
+                            <td>获得下一个元素</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+
+                <pre><code>
+        迭代打印
+
+        Collection collection = new ArrayList();
+        Iterator iterator = collection.iterator();
+        while(iterator.hasNext()){
+            Object obj = iterator.next();
+            System.out.println(obj);
+        }
+
+</code></pre>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp集合的迭代器 遍历过程中是不允许对集合添加删除的变更操作
+                </p>
+                <pre><code>
+        Collection collection = new ArrayList();
+        collection.add("value");
+        Iterator iterator = collection.iterator();
+        while(iterator.hasNext()){
+            String obj = (String) iterator.next();
+            if ("value".equals(obj)){
+                collection.add("water");
+            }
+            System.out.println(obj);
+        }
+
+</code></pre>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp运行之后，结果报错
+                </p>
+            </section>
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo">
+                    <div style="position:absolute;right:0;top:0;">
+                        <ul class="actions small">
+                            <li><a href="index.html" class="button primary small"><strong>返回主页</strong></a></li>
+                        </ul>
+                    </div>
+                </a>
+            </header>
+
+            <section>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

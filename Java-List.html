@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <!-- 注意填写标题！ -->
+    <title>JavaList的学习记录</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo" style="font-size:20px"><strong>Champrin's</strong> blog</a>
+
+            </header>
+
+            <!-- Content -->
+            <section>
+                <header class="main">
+                    <h1>Java-List</h1>
+                </header>
+
+
+                <p>Java List 学习记录</p>
+                <p>List是有序的集合，像数组一样。可以把List理解为是一个长度可变的数组，而且有丰富的api。List集合底层就是数组</p>
+                <p>List的方法继承了Collection，操作List可回顾<a href="Java-Collection.html">Java集合 学习记录</a></p>
+                <p>List的元素可以重复</p>
+                <hr class="major"/>
+
+                <div class="table-wrapper">
+                    <table class="alt">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>void</td>
+                            <td>add(int index, E element)
+                                <br> 在列表的指定位置插入指定元素（可选操作）。
+                            </td>
+                            <td>在index处添加item元素</td>
+
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+                <p>在一处插入一个元素，后面的元素都会向后移动一位</p>
+                <hr class="major"/>
+                <div class="table-wrapper">
+                    <table class="alt">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>E</td>
+                            <td>get(int index) <br>返回列表中指定位置的元素</td>
+                            <td>根据索引号来获得这个索引的内容</td>
+                        </tr>
+                        <tr>
+                            <td>E</td>
+                            <td>set(int index, E element) <br>用指定元素替换列表中指定位置的元素（可选操作）。</td>
+                            <td>将一个索引号的值改为element</td>
+                        </tr>
+                        <tr>
+                            <td>int</td>
+                            <td>indexOf(Object o) <br>返回此列表中第一次出现的指定元素的索引；如果此列表不包含该元素，则返回 -1。</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>int</td>
+                            <td>lastIndexOf(Object o) <br>返回此列表中最后出现的指定元素的索引；如果列表不包含此元素，则返回 -1。</td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <hr class="major"/>
+
+                <h2>List的迭代器 </h2>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbspList的迭代器 遍历过程中也是不允许对集合添加删除的变更操作
+                </p>
+                <div class="table-wrapper">
+                    <table class="alt">
+
+                        <tbody>
+
+                        <tr>
+                            <td>ListIterator < E ></td>
+                            <td>listIterator()
+                                <br> 返回此列表元素的列表迭代器（按适当顺序）。
+                            </td>
+                            <td>获得这个List集合的迭代器</td>
+                        </tr>
+                        <tr>
+                            <td>boolean</td>
+                            <td>hasPrevious()
+                                <br> 如果以逆向遍历列表，列表迭代器有多个元素，则返回 true。
+                            <td>判断迭代器中是否有前一个元素</td>
+                        </tr>
+                        <tr>
+                            <td>E</td>
+                            <td> E previous()
+                                <br> 返回列表中的前一个元素。
+                            </td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+                <p style="font-size:10px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp逆向迭代
+                </p>
+                <pre><code>
+        List collection = new ArrayList();
+        collection.add("value");
+        ListIterator iterator = collection.listIterator();
+        while(iterator.hasPrevious()){
+            String obj = (String) iterator.previous();
+            System.out.println(obj);
+        }
+
+</code></pre>
+                <p style="font-size:10px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp这里提供了一个可以进行添删操作的方法，但是遍历的本次不生效
+                </p>
+                <pre><code>
+        List collection = new ArrayList();
+        collection.add("value");
+        ListIterator iterator = collection.listIterator();
+        while(iterator.hasNext()){
+            String obj = (String) iterator.next();
+            iterator.add("ok"); //在这里
+            System.out.println(obj);
+
+        }
+
+</code></pre>
+                <pre><code>
+        输出结果仍为value，而不是value ok
+
+</code></pre>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp若要实时添加删除的变更操作，可以用for
+                </p>
+                <pre><code>
+        List collection = new ArrayList();
+        collection.add("value");
+        for (int i = 0; i < collection.size(); i++) {
+            String obj = (String) collection.get(i);
+            if ("value".equals(obj)){
+                collection.add("water");
+            }
+            System.out.println(obj);
+        }
+
+</code></pre>
+                <pre><code>
+        输出结果为value water
+
+</code></pre>
+
+                <hr class="major"/>
+
+                <h2>ArrayList </h2>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp特点：元素可以重复、可以有null存在、有顺序，长度不固定、线程不安全、效率高
+                </p>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在添加数据的时候初始长度是10，后续以5个长度来扩充集合的长度
+                </p>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp好处：性能高 缺点：线程不安全，可能带来数据不准确
+                </p>
+
+                <hr class="major"/>
+
+                <h2>LinkedList </h2>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp堆栈：先进后出 队列：先进先出
+                </p>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp链表：储存了元素和其前后地址，使元素之间互相联系起来
+                </p>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp LinkedList是以链表为原理，添加修改删除的性能高，不是线程安全的
+                </p>
+                <div class="table-wrapper">
+                    <table class="alt">
+
+                        <tr>
+                            <td>void</td>
+                            <td>addFirst(E e)
+                                <br> 将指定元素插入此列表的开头。
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td>void addLast(E e)
+                                <br> 将指定元素添加到此列表的结尾。
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>E</td>
+                            <td>removeFirst()
+                                <br> 移除并返回此列表的第一个元素。
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>E</td>
+                            <td>removeLast()
+                                <br> 移除并返回此列表的最后一个元素。
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>E</td>
+                            <td>pop()
+                                <br> 从此列表所表示的堆栈处弹出一个元素。
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>void</td>
+                            <td>push(E e)
+                                <br> 将元素推入此列表所表示的堆栈。
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+
+                <hr class="major"/>
+
+                <h2>Vector </h2>
+                <p style="font-size:20px">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp底层也是数组，是线程安全的, 随之性能下降
+                </p>
+                <hr class="major"/>
+            </section>
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo">
+                    <div style="position:absolute;right:0;top:0;">
+                        <ul class="actions small">
+                            <li><a href="index.html" class="button primary small"><strong>返回主页</strong></a></li>
+                        </ul>
+                    </div>
+                </a>
+            </header>
+
+            <section>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
